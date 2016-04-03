@@ -1,2 +1,2 @@
 # GLab
-Small tests and experiments
+Small tests, experiments and memos
