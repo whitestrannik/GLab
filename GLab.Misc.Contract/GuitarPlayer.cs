@@ -23,9 +23,9 @@ namespace GLab.Misc.Contract
         public void PlayMelody(IEnumerable<NoteBase> melody)
         {
             // Generate ContractException
-            Sys.Contract.Requires(melody != null && melody.Count() > 0);
-            // Generate ArgumentException
-            Sys.Contract.Requires<ArgumentException>(Sys.Contract.ForAll<NoteBase>(melody, (NoteBase item) => { return item.IsTrueNote; }), "False note exists in source");
+            Sys.Contract.Requires<ArgumentNullException>(melody != null && melody.Count() > 0);
+            // Generate ArgumentException            
+            Sys.Contract.Requires(Sys.Contract.ForAll(melody, (NoteBase item) => { return item.IsTrueNote; }), "False note exists in source");
 
             foreach (NoteBase note in melody)
                 PlayNote(note);

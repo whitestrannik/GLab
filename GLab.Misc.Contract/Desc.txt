@@ -1,0 +1,3 @@
+﻿
+- we can handle contract Fail with Contract.ContractFailed event, but if we use Require<Exception> - fire event, but then raise exception as well
+- method with [Sys.ContractInvariantMethod] - can contain only Contract.Invariant check and called after each method, which can change object's state

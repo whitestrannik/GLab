@@ -89,12 +89,18 @@
   <ItemGroup>
     <Compile Include="GuitarPlayer.cs" />
     <Compile Include="IGuitarPlayer.cs" />
+    <Compile Include="IPianoPlayer.cs" />
     <Compile Include="Notes.cs" />
+    <Compile Include="PianoPlayer.cs" />
+    <Compile Include="PianoPlayerContract.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Desc.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
