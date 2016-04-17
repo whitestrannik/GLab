@@ -1,0 +1,10 @@
+﻿Call sequence:
+
+1. Dom static cons
+2. Dom prop init
+3. DomBase static cons
+4. DomBase prop init
+5. DomBase cons
+6. Dom virt func (overrided) 
+7. Dom cons
+8. Dom virt func (overrided) 

@@ -10,6 +10,9 @@ namespace GLab.Misc.CallSequence
     {
         static void Main(string[] args)
         {
+            DomBase dom = new Dom();
+
+            Console.ReadLine();
         }
     }
 }
