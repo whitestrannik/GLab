@@ -24,17 +24,19 @@ namespace Glab.Base.Collection
 
             int index = 0;
             foreach (var item in array)
-                _array[++index] = item;
+                _array[index++] = item;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (var index = 0; index < _elementCount; index++)
+                yield return _array[index];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (var index = 0; index < _elementCount; index++)
+                yield return _array[index];
         }
 
 

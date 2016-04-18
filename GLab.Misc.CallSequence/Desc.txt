@@ -7,4 +7,4 @@
 5. DomBase cons
 6. Dom virt func (overrided) 
 7. Dom cons
-8. Dom virt func (overrided) 
+8. Dom virt func (overrided) l

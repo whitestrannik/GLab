@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glab.Test.Misc", "Glab.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLab.Misc.CallSequence", "GLab.Misc.CallSequence\GLab.Misc.CallSequence.csproj", "{45223721-C319-46F2-A3AA-71AD474EABFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glab.Test.Base", "Glab.Test.Base\Glab.Test.Base.csproj", "{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{45223721-C319-46F2-A3AA-71AD474EABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45223721-C319-46F2-A3AA-71AD474EABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45223721-C319-46F2-A3AA-71AD474EABFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +60,6 @@ Global
 		{56F587DB-DA95-452B-A281-CB1023904574} = {9072A360-93AF-4808-8530-65DD09C7605E}
 		{8E3F4F4C-17E5-43A3-9668-003AD01B8056} = {60480C0C-4415-49FD-ADE0-B86089857C23}
 		{45223721-C319-46F2-A3AA-71AD474EABFB} = {3724638B-EB36-4F66-A743-C871313E70D6}
+		{A5AFA498-CD8B-4EC5-8A37-68BDA4A3ED6C} = {60480C0C-4415-49FD-ADE0-B86089857C23}
 	EndGlobalSection
 EndGlobal
