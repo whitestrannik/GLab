@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Glab.Base.Collection
 {
-    public class DynamicArrayManual<T> : IEnumerable<T>, IEnumerable
+    public class DynamicEnumerableManual<T> : IEnumerable<T>, IEnumerable
     {
-        public DynamicArrayManual()
+        public DynamicEnumerableManual()
         {
             _elementCount = 0;
             _length = 7;
             _array = new T[_length];
         }
 
-        public DynamicArrayManual(IEnumerable<T> array)
+        public DynamicEnumerableManual(IEnumerable<T> array)
         {
             _length = GetEnumerableLength(array);
             _elementCount = _length;            
@@ -29,19 +29,19 @@ namespace Glab.Base.Collection
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new DynamicArrayEnumerator<T>(this);
+            return new DynamicEnumerableEnumerator<T>(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new DynamicArrayEnumerator<T>(this);
+            return new DynamicEnumerableEnumerator<T>(this);
         }
 
         #region IEnumerator
 
-        class DynamicArrayEnumerator<T> : IEnumerator<T>
+        class DynamicEnumerableEnumerator<T> : IEnumerator<T>
         {           
-            internal DynamicArrayEnumerator(DynamicArrayManual<T> source)
+            internal DynamicEnumerableEnumerator(DynamicEnumerableManual<T> source)
             {
                 __index = 0;
                 __source = source;
@@ -79,7 +79,7 @@ namespace Glab.Base.Collection
                 throw new NotImplementedException();
             }
 
-            DynamicArrayManual<T> __source;
+            DynamicEnumerableManual<T> __source;
             int __index;
         }
 

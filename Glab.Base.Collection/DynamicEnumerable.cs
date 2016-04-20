@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Glab.Base.Collection
 {
-    public class DynamicArray<T> : IEnumerable<T>, IEnumerable
+    public class DynamicEnumerable<T> : IEnumerable<T>, IEnumerable
     {
-        public DynamicArray()
+        public DynamicEnumerable()
         {
             _elementCount = 0;
             _length = 7;
             _array = new T[_length];
         }
 
-        public DynamicArray(IEnumerable<T> array)
+        public DynamicEnumerable(IEnumerable<T> array)
         {
             _length = GetEnumerableLength(array);
             _elementCount = _length;            
