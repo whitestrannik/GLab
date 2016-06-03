@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Glab.Base.Collection;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace Glab.Test.Base
 {
@@ -163,6 +164,62 @@ namespace Glab.Test.Base
 
             array.Clear();
             Assert.AreEqual(array.Count, 0, "DynamicListTest. Items count must be equal 0");
+        }
+
+        [TestMethod]
+        public void BubbleSortTest()
+        {
+            IntSortTest((list) => { return SortedAlhorithms.BubbleSort<int>(list); });
+        }
+
+        [TestMethod]
+        public void BubbleLikeSortTest()
+        {
+            IntSortTest((list) => { return SortedAlhorithms.BubbleLikeSort<int>(list); });
+        }
+
+        [TestMethod]
+        public void QuickSortTest()
+        {
+            IntSortTest((list) => { return SortedAlhorithms.QuickSort<int>(list); });
+        }
+
+        void IntSortTest(Func<IList<int>, IList<int>> sortFunc)
+        {
+            var input = new List<int> { 3, 5, 2, 5, 7, 0 };
+            var etalon = new List<int> { 0, 2, 3, 5, 5, 7 };
+            var result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 1");
+
+            input = new List<int> { 9, 9, 2, 0, 0, 5 };
+            etalon = new List<int> { 0, 0, 2, 5, 9, 9 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 2");
+
+            input = new List<int> { 3, 2, 1 };
+            etalon = new List<int> { 1, 2, 3 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 3");
+
+            input = new List<int> { 1, 2, 3 };
+            etalon = new List<int> { 1, 2, 3 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 4");
+
+            input = new List<int> { 1, 1, 0 };
+            etalon = new List<int> { 0, 1, 1 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 5");
+
+            input = new List<int> { 1, 0, 1 };
+            etalon = new List<int> { 0, 1, 1 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 6");
+
+            input = new List<int> { 0, 1, 2, 0, 0 };
+            etalon = new List<int> { 0, 0, 0, 1, 2 };
+            result = sortFunc(input);
+            Assert.IsTrue(result.SequenceEqual(etalon), "Uncorrect result 7");
         }
     }
 }

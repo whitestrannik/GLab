@@ -57,7 +57,8 @@ namespace Glab.Base.Collection
 
         public int Add(object value)
         {
-            throw new NotImplementedException();
+            Add((T)value);
+            return _count - 1;
         }
 
         public void Add(T item)
@@ -70,14 +71,7 @@ namespace Glab.Base.Collection
                 _array = CreateNewArray(_array, _capasity);
                 _array[_count++] = item;
             }
-        }
-
-        private T[] CreateNewArray(Array source, int capasity)
-        {            
-            T[] newArray = new T[capasity];
-            Array.Copy(source, newArray, source.Length);
-            return newArray;
-        }
+        }       
 
         public void Clear()
         {
@@ -87,67 +81,96 @@ namespace Glab.Base.Collection
 
         public bool Contains(object value)
         {
-            throw new NotImplementedException();
+            return _array.Where((item) => { return Equals(value); }).Count() != 0;
         }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            return _array.Where((i) => { return Equals(item); }).Count() != 0;
         }
 
         public void CopyTo(Array array, int index)
         {
-            throw new NotImplementedException();
+            _array.CopyTo(array, index);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            _array.CopyTo(array, arrayIndex);
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < _count; i++)
+                yield return _array[i];
         }
 
         public int IndexOf(object value)
         {
-            throw new NotImplementedException();
+            return IndexOf((T)value);           
         }
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _count; i++)
+                if (Equals(item))
+                    return i;
+
+            return -1;
         }
 
         public void Insert(int index, object value)
         {
-            throw new NotImplementedException();
+            Insert(index, (T)value);
+        }
+
+        private void MoveElements(T[] array, int fromIndex, int toIndex, int length)
+        {
+            if (length>0)
+                for (int i = 0; i < toIndex - fromIndex + 1; i++)
+                    array[toIndex + length - i] = array[toIndex - i];
+            else
+                for (int i = 0; i < toIndex - fromIndex + 1; i++)
+                    array[fromIndex - i] = array[fromIndex];
         }
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            if (_count + 1 > _capasity)
+            {
+                _capasity = CalcCapasity(_capasity);
+                _array = CreateNewArray(_array, _capasity);
+            }
+
+            MoveElements(_array, index, _count - 1, 1);
+            _array[index] = item;
+            _count++;
         }
 
         public void Remove(object value)
         {
-            throw new NotImplementedException();
+            Remove((T)value);
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            int index = IndexOf(item);
+            if (index == -1) return false;
+
+            RemoveAt(index);
+            return true;           
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            MoveElements(_array, index+1, _count - 1, -1);            
+            _count--;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (var item in _array)
+                yield return item;
         }
 
         #endregion
@@ -163,6 +186,13 @@ namespace Glab.Base.Collection
         int CalcCapasity(int capasity)
         {
             return capasity + capasity / 2 + 1;
+        }
+
+        private T[] CreateNewArray(Array source, int capasity)
+        {
+            T[] newArray = new T[capasity];
+            Array.Copy(source, newArray, source.Length);
+            return newArray;
         }
 
         #endregion
