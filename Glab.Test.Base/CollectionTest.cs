@@ -184,6 +184,18 @@ namespace Glab.Test.Base
             IntSortTest((list) => { return SortedAlhorithms.QuickSort<int>(list); });
         }
 
+        [TestMethod]
+        public void InsertionSortTest()
+        {
+            IntSortTest((list) => { return SortedAlhorithms.InsertionSort<int>(list); });
+        }
+
+        [TestMethod]
+        public void SelectionSortTest()
+        {
+            IntSortTest((list) => { return SortedAlhorithms.SelectionSort<int>(list); });
+        }
+
         void IntSortTest(Func<IList<int>, IList<int>> sortFunc)
         {
             var input = new List<int> { 3, 5, 2, 5, 7, 0 };

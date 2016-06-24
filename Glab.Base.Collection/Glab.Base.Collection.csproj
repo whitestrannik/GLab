@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dequeue.cs" />
     <Compile Include="DynamicEnumerableManual.cs" />
     <Compile Include="DynamicEnumerable.cs" />
     <Compile Include="DynamicList.cs" />

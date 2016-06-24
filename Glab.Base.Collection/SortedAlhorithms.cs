@@ -38,6 +38,45 @@ namespace Glab.Base.Collection
             return result;
         }
 
+        public static IList<T> InsertionSort<T>(IList<T> list) where T: IComparable<T>
+        {
+            List<T> result = new List<T>(list);
+
+            for (int i = 1; i < result.Count; i++)
+            {
+                int j = i;
+                // i - элемент, который нужно отсортировать. Все что слева - уже отсортировано
+                //Перемещаем послдедовательно влево, покане найдем элемент, который меньше исходного
+                while (j > 0 && result[j].CompareTo(result[j-1]) < 0)
+                {
+                    Swap<T>(result, j, j-1);
+                    j--;
+                }
+            }
+
+            return result;
+        }
+
+        public static IList<T> SelectionSort<T>(IList<T> list) where T: IComparable<T>
+        {
+            var result = new List<T>(list);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                int minIndex = i;
+                for (int j = i; j < result.Count; j++)
+                {
+                    if (result[j].CompareTo(result[minIndex]) < 0)
+                        minIndex = j;
+                }
+
+                Swap<T>(result, i, minIndex);
+            }
+
+            return result;
+        }
+
+
         public static IList<T> MergeSort<T>(IList<T> list) where T : IComparable<T>
         {
             if (list == null) return null;
