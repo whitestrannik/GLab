@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Glab.Base.Collection
+﻿namespace Glab.Base.Collection
 {
     public class Dequeue<T>
     {
@@ -41,7 +35,7 @@ namespace Glab.Base.Collection
             if (_length == _array.Length)
                 ExtendedArraySize();
 
-            if (_taill == 0)
+            if (_tail == 0)
             {
                 _head = _size - 1;
                 _array[_head] = value;

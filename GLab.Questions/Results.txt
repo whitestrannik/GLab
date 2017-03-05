@@ -1,0 +1,1 @@
+﻿1. By default struct doesn't have == operator

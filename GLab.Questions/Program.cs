@@ -11,10 +11,45 @@ namespace GLab.Questions
     {
         static void Main(string[] args)
         {
+            Reactive();
+
+            //Test();
             //UseMutableStruct();
             //UseTestStruct();
-            UseObjWithInterface();
+            //UseObjWithInterface();
+            //UseGenericTest();
 
+            Console.ReadLine();
+        }
+
+        private static void Reactive()
+        {
+            var o = new Observerables();
+            o.Do();
+        }
+
+        private static void Test()
+        {
+            uint i = 100, j = 100;
+            ulong diff = 0;
+
+            while (i > 0)
+            {
+                j = i - 1;
+                while (j > 0)
+                {
+                    diff = diff + 2 * i * j;
+                    j--;
+                }
+                i--;
+            }
+        }
+
+        private static void UseGenericTest()
+        {
+            GenericObj<int> go = new GenericObj<int>();
+            GenericObj<int> go2 = new GenericObj<int>();
+            GenericObjDerived<float> god = new GenericObjDerived<float>();
         }
 
         private static void UseObjWithInterface()
@@ -32,9 +67,13 @@ namespace GLab.Questions
         private static void UseTestStruct()
         {
             TestStruct t1 = new TestStruct(), t2 = new TestStruct();
-            //if (t1 == t2) return;
-            if (null == null) ;
-            if (t1.Equals(t2)) return;
+            if (t1 == t2) return;
+
+            object o = t1;
+
+            
+            if (o.Equals(t2)) ;
+
         }
 
         private static void UseMutableStruct()
