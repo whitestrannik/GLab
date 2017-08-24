@@ -68,4 +68,24 @@ namespace Glab.Test.ConsoleExecutable
             }
         }
     }
+
+    public class BaseClass : IDisposable
+    {
+        public void Dispose() { } // sealed
+    }
+
+    public class DeriveClass : BaseClass, IDisposable
+    {
+        new public void Dispose() { } // new implementation
+    }
+
+    {
+        BaseClass b = new DeriveClass();
+        b.Dispose(); // base implementation
+        ((IDisposable)b).Dispose(); // derive implementation
+
+        DeriveClass d = new DeriveClass();
+        d.Dispose(); // derive implementation
+        ((IDisposable)b).Dispose(); // derive implementation
+    }
 }

@@ -11,13 +11,22 @@ namespace GLab.Questions
     {
         static void Main(string[] args)
         {
-            Reactive();
+            //Reactive();
 
             //Test();
             //UseMutableStruct();
             //UseTestStruct();
             //UseObjWithInterface();
             //UseGenericTest();
+            decimal a1 = 0, b1 = 0;
+            int a = 0, b = 0;
+            
+            var res = Gen(a1, b1);
+
+            res = Gen(a, b);
+            res = Gen2(a, b);
+            res = Gen3(a, b);
+            res = a.CompareTo(b);
 
             Console.ReadLine();
         }
@@ -91,6 +100,21 @@ namespace GLab.Questions
             a = new ClassWithMutableStructure();
             a.ValueProperty.Change();
             Debug.Assert(a.ValueProperty.i == 1);
+        }
+
+        private static int Gen<T>(T t, T t2) where T : IComparable<T>
+        {
+            return t.CompareTo(t2);
+        }
+
+        private static int Gen2<T>(T t, T t2) where T : IComparable
+        {
+            return t.CompareTo(t2);
+        }
+
+        private static int Gen3(IComparable t, IComparable t2)
+        {
+            return t.CompareTo(t2);
         }
     }
 
